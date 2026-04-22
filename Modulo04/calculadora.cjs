@@ -49,15 +49,15 @@ function raiz(calculadora) {
 let conta;
 
 do {
-    conta = prompt("Digite A (+), S (-), M (x), D ( / ),P (%) ,T ( ^ ), E para encerrar : ").toUpperCase();
+    conta = prompt("[A]-(+), [S] (-), [M]-(x), [D]-( / ), [P]-(%), [T]-(^), [E] para Encerrar ").toUpperCase();
 
-    switch (true) {
+   switch (true) {
         case conta == 'A':
             let valorA = Number(prompt(": "));
             adicao(valorA);
             break;
         case conta == 'S':
-            let valorS = Number(prompt(": "));
+            let valorS = parseInt(prompt(": "));
             subtracao(valorS);
             break;
         case conta == 'M':
@@ -88,4 +88,4 @@ do {
 
 } while (conta !== 'E')
 
-console.log(calculadora)
+console.table(calculadora)

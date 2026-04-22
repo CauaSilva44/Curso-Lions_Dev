@@ -2,7 +2,7 @@ const prompt = require('prompt-sync')();
 
 function rastreio(encomenda) {
     switch (true) {
-        case (codigo == 'P'):
+        case (codigo == "P"):
             statusCodigo = "Pendente de Envio..";
             encomenda.statusCodigo = statusCodigo;
             return encomenda;
@@ -23,7 +23,7 @@ function rastreio(encomenda) {
 }
 
 let id = prompt("Qual a id do pedido: ")
-let codigo = prompt("Status do pedido: ")
+let codigo = prompt("Status do pedido: ").toUpperCase();
 
 let encomenda = {
     id: id ,
@@ -31,4 +31,4 @@ let encomenda = {
 } 
 
 let resultado = rastreio(encomenda)
-console.log(resultado)
+console.table(resultado)

@@ -20,18 +20,18 @@ function registrarDespesa (valorDespesa) {
 let opcao;
 
 do {
-    opcao = prompt("Digite V (Venda) , D (Despesa), ou S (Sair): ").toUpperCase();
-
+    console.log(`Qual a opção desejada: \n[V]-(Venda) \n[D]-(Despesa) \n[S]-(Sair) `);
+    opcao = prompt(':').toUpperCase();
     switch (true) {
         case opcao == 'V':
             let valorVenda = Number(prompt("Digite o valor da Venda: "));
             registrarVenda(valorVenda);
-            caixa.historicoTransaçoes.push('Venda: ' + valorVenda);
+            caixa.historicoTransaçoes.push('Entrada: ' + valorVenda);
             break;
         case opcao == 'D':
             let valorDespesa = Number(prompt('Digite o valor da Despesa: '));
             registrarDespesa(valorDespesa);
-            caixa.historicoTransaçoes.push("Despesa: " + valorDespesa);
+            caixa.historicoTransaçoes.push("Saida: " + valorDespesa);
             break;
         case opcao == 'S':
             console.log("Encerrando Processo...");
@@ -41,4 +41,4 @@ do {
     }
 } while (opcao !== "S");
 
-console.log(caixa)
+console.table(caixa)
