@@ -11,5 +11,10 @@ while(vendasDoDia.length <= 4) {
 }
 
 for(let i = 0; i < vendasDoDia.length; i++) {
-    total = total + vendasDoDia[i] 
-} console.log(total)
+    total += vendasDoDia[i] 
+}
+
+let media = 0
+    media = total / vendasDoDia.length
+
+console.log(`Total: ${total}\n Média por compra: ${media}`)
