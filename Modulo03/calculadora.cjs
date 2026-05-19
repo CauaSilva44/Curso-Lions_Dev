@@ -41,51 +41,43 @@ function potencia(valorT) {
     return calculadora.calculo 
 }
 
-function raiz(calculadora) {
-    calculadora.calculo -= Math.sqrt(calculadora.calculo)
-    console.log(calculadora)
-    return calculadora.calculo
-}
 let conta;
 
 do {
-    conta = prompt("[A]-(+), [S] (-), [M]-(x), [D]-( / ), [P]-(%), [T]-(^), [E] para Encerrar ").toUpperCase();
+    conta = prompt("[1]-(+), [2] (-), [3]-(x), [4]-( / ), [5]-(%), [6]-(^), [0] para Encerrar ").toUpperCase();
 
    switch (true) {
-        case conta == 'A':
+        case conta == '1':
             let valorA = Number(prompt(": "));
             adicao(valorA);
             break;
-        case conta == 'S':
+        case conta == '2':
             let valorS = parseInt(prompt(": "));
             subtracao(valorS);
             break;
-        case conta == 'M':
+        case conta == '3':
             let valorM = Number(prompt(": "));
             multiplicação(valorM);
             break;
-        case conta == 'D':
+        case conta == '4':
             let valorD = Number(prompt(": "));
             divisao(valorD);
             break;
-        case conta == 'P':
+        case conta == '5':
             let valorP = Number(prompt(": "));
             porcentagem(valorP);
             break;
-        case conta == 'T':
+        case conta == '6':
             let valorT = Number(prompt(": "));
             potencia(valorT);
             break;
-        case conta == 'R':
-            raiz(calculadora.calculo);
-            break;
-        case conta == 'E':
+        case conta == '0':
             console.log("Encerrando processo... ");
             break;
         default:
             console.log("Valor inválido!");
     }
 
-} while (conta !== 'E')
+} while (conta !== '0')
 
 console.table(calculadora)
