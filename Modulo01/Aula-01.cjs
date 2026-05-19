@@ -1,2 +1,2 @@
-let mensagem = ('Estou programando em JavaScript!');
-console.log(mensagem) 
+let mensagem = "Hello World!"
+console.log(mensagem)

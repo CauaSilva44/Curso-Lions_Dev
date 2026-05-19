@@ -1,4 +1,2 @@
-let nome = 'Cauã'
-let saudacao = "Olá " + nome + "!"
-let fraseCompleta = saudacao + " Hoje é um belo dia."
-console.log(fraseCompleta);
+let mensagem = ('Estou programando em JavaScript!');
+console.log(mensagem) 
