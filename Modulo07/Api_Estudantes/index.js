@@ -2,12 +2,13 @@ import express, { Router } from "express";
 
 import estudantes from "./dados.js";
 import criarDados from "./criar.js";
-import deletarEstudante from "./deletar.js";
 
 const router = express();
 const port = 8765;
 
 router.use(express.json());
+
+let id = 0;
 
  // -- ENTRADA -- //
 router.get(("/"), (req, res) => {
@@ -50,19 +51,18 @@ const novosDados = {
  // -- DELETAR -- //
 
 router.delete("/estudantes/deletar/:id", (req, res) => {
-    const { idEst } = req.body;
+    const { id } = parseInt(req.params);
 
-    if (!idEst) {
-        return res.status(400).json({ error: "ID do Estudante é obrigatório" });
-    }
+    const index = estudantes.findIndex(estudantes => estudantes.id === id);
 
-    const resultado = deletarEstudante(estudantes, idEst);
-
-    if (!resultado) {
+    if (index === -1) {
         return res.status(404).json({ error: "Estudante não encontrado" });
-    }
+    };
 
-    res.status(200).json({ message: "Estudante deletado com sucesso!" });
+    estudantes.splice(index, 1);
+
+    res.status(201).json({ message: "Estudante exterminado com sucesso!" });
+
 });
 
  //_______________//
@@ -70,56 +70,47 @@ router.delete("/estudantes/deletar/:id", (req, res) => {
  // -- ATUALIZAR -- //
 
 router.put("/estudantes/atualizar/:id", (req, res) => {
-    const { idEst, curso, ano } = req.body;
+    const { nome, matricula, curso, ano } = req.body;
+    const id = parseInt(req.params.id);
 
-    if (!idEst || !curso || !ano) {
-        return res.status(400).json({ error: "Todos os campos são obrigatórios" });
-    }
+    const index = estudantes.findIndex(estudante => estudante.id === id);
 
-    const estudante = estudantes.find(estudante => estudante.id === idEst);
+    if (index === -1) {
+        res.status(404).json({ error: "Estudante não encontrado" });
+    };
 
-    if (!estudante) {
-        return res.status(404).json({ error: "Estudante não encontrado" });
-    }
-
-    estudante.curso = curso;
-    estudante.ano = ano;
+    estudantes[index].nome = nome || estudantes[index].nome;
+    estudantes[index].matricula = matricula || estudantes[index].matricula;
+    estudantes[index].curso = curso || estudantes[index].curso;
+    estudantes[index].ano = ano || estudantes[index].ano;
 
     res.status(200).json({ message: "Estudante atualizado com sucesso!" });
 });
 
- // -- BUSCAR -- //
-router.get("/estudantes/buscar?nome=Robertin", (req, res) => {
-    const { nome } = req.query;
+ // -- BUSCAR POR NOME -- //
 
-    if (!nome) {
-        return res.status(400).json({ error: "Nome do Estudante é obrigatório" });
-    }
+router.get("/estudantes/busca", (req, res) => {   
+    const { nome, matricula, curso} = req.query;
 
-    const estudante = estudantes.find(estudante => estudante.nome.toLowerCase() === nome.toLowerCase());
-
-    if (!estudante) {
-        return res.status(404).json({ error: "Estudante não encontrado" });
-    }
-
-    res.status(200).json(estudante);
-});
-
-router.get("/estudantes/buscar=curso", (req, res) => {
-    const { curso } = req.query;
-
-    if(!curso) {
-        return res.status(400).json({error: "Curso do Estudante é obrigatório"});
+    if (nome) {                           
+        const resultadoBusca = estudantes.filter((estudante) => estudante.nome.toLowerCase().includes(nome.toLowerCase()));
+        return res.status(200).json({message: "Busca realizada com sucesso!", estudantesEncontrados:resultadoBusca});
     };
 
-    const estudante = estudantes.filter(estudante => estudante.curso.toLowerCase() === curso.toLowerCase());
-
-    if(!estudante || estudante.length === 0) {
-        return res.status(404).json({error: "Nenhum estudante encontrado para o curso especificado"});
+    if(matricula) {
+        const resultadoBusca = estudantes.filter((estudante) => estudante.matricula.toLowerCase().includes(matricula.toLowerCase()));
+        return res.status(200).json({message: "Busca realizada com sucesso!", estudantesEncontrados:resultadoBusca});
     };
 
-    res.status(200).json(estudante);
+    if(curso) {
+        const resultadoBusca = estudantes.filter((estudante) => estudante.curso.toLowerCase().includes(curso.toLowerCase()));
+        return res.status(200).json({message: "Busca realizada com sucesso!", estudantesEncontrados:resultadoBusca});
+    };
+
+    res.status(400).json({error: "O termo de busca é obrigatório"});
+
 });
+
 
  //______________//
  // -- INICIAR SERVIDOR -- //

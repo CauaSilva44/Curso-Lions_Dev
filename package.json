@@ -1,6 +1,10 @@
 {
   "dependencies": {
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "mongodb": "^7.2.0",
+    "mongoos": "^0.0.1-security",
+    "mongoose": "^9.6.2",
     "prompt-sync": "^4.2.0"
   },
   "name": "caua.s",
