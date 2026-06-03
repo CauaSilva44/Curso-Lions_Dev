@@ -190,8 +190,10 @@ app.put("/flashcards", (req, res) =>
 
 //_________________________//
 
+// -- Servidor Iniciado -- //
+
 app.listen((port), () => {
     console.log("O servidor está aberto com sucesso na porta:", 3000);
 });
 
-
+//_________________________//

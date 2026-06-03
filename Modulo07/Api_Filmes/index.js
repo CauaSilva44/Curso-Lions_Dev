@@ -87,6 +87,24 @@ router.put("/filmes/:id", (req, res) => {
 
 //______________//
 
+// -- DELETE -- //
+
+router.delete("/filmes/:id", (req, res) => {
+    const {id} = (req.params);
+
+    const index = filmes.findIndex(filmes => filmes.id === parseInt(id));
+
+    if(index === -1) {
+        res.status(404).json({error: "ID não encontrado."});
+    };
+
+    filmes.splice(index, 1);
+
+    res.status(200).json({message: "O Filme Deletado"});
+});
+
+//______________//
+
 // -- Servidor Iniciado -- //
 
 router.listen(port, () => {

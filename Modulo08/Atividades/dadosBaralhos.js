@@ -14,7 +14,7 @@ mongoose.Schema(
     },
     {
         timestamps: true,
-    }   
+    }
 );
 
 const Baralho = 

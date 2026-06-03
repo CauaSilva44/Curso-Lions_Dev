@@ -12,7 +12,7 @@ let estudantes = [
         matricula: "2026/04",
         curso: "Catador de Latinha",
         ano: 2026
-        },  
+    },  
 ];
 
 export default estudantes
