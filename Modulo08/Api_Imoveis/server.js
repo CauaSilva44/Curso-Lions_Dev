@@ -232,7 +232,7 @@ app.delete("/avaliacoes/:id", async (req, res) => {
     if (avaliacao.nomeUsuario !== nomeUsuario) {
       return res.status(403).json({
         message: "Você não tem permissão para deletar a avaliação de outro usuário.",
-      });
+      })
     }
 
     await Avaliacao.findByIdAndDelete(id);
