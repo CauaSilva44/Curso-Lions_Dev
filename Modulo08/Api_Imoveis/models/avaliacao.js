@@ -13,8 +13,8 @@ const AvaliacaoSchema = new mongoose.Schema({
   nota: {
     type: Number,
     required: [true, "A nota é obrigatória."],
-    min: [1, "A nota mínima é 1."],
-    max: [5, "A nota máxima é 5."], 
+    min: [1, "O mínimo é 1."],
+    max: [5, "O máximo é 5."], 
   },
 
   comentario: {
@@ -25,4 +25,4 @@ const AvaliacaoSchema = new mongoose.Schema({
 });
 
 const Avaliacao = mongoose.model("Avaliacao", AvaliacaoSchema);
-export default Avaliacao;
+export default Avaliacao; 

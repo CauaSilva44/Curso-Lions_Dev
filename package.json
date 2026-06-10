@@ -4,7 +4,7 @@
     "express": "^5.2.1",
     "mongodb": "^7.2.0",
     "mongoos": "^0.0.1-security",
-    "mongoose": "^9.6.2",
+    "mongoose": "^9.7.0",
     "moongose": "^1.0.0",
     "prompt-sync": "^4.2.0"
   },
