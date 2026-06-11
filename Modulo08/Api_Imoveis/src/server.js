@@ -1,8 +1,8 @@
 import express from "express";
-import connectDB from "./db.js";
-import Imovel from "./models/imovel.js";
-import Reserva from "./models/reserva.js";
-import Avaliacao from "./models/avaliacao.js";
+import connectDB from "./src/db.js";
+import Imovel from "./src/models/imovel.js";
+import Reserva from "./src/models/reserva.js";
+import Avaliacao from "./src/models/avaliacao.js";
 
 const app = express();
 const port = process.env.PORT || 3108;
@@ -245,6 +245,10 @@ app.delete("/avaliacoes/:id", async (req, res) => {
 
 //_______________________________________________________________________________________________//
 
+// -- Servidor Iniciado -- //
+
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
+
+//_________________________//

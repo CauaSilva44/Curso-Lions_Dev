@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 
-const PedidosSchema = new mongoose.Schema({
-    nomeCliente: {
-        type: String,
-        required: [true, "O nome do cliente é obrigatório."],
-    },
+const itemQuantSchema = new mongoose.Schema({
     item: {
         type: String,
         required: [true, "O item é obrigatório."],
@@ -18,7 +14,18 @@ const PedidosSchema = new mongoose.Schema({
         required: [true, "A quantidade é obrigatória."],
         min: [1, "A quantidade deve ser no mínimo 1."],
     },
-    formaPagemento: {
+});
+
+const PedidoSchema = new mongoose.Schema({
+    nomeCliente: {
+        type: String,
+        required: [true, "O nome do cliente é obrigatório."],
+    },
+    pedidos: {
+        type: [itemQuantSchema],
+        required: [true, "A lista de itens é obrigatória."],
+    },
+    formaPagamento: {
         type: String,
         required: [true, "A forma de pagamento é obrigatória."],
         enum: {
@@ -34,5 +41,16 @@ const PedidosSchema = new mongoose.Schema({
     },
     valorTotal: {
         type: Number,
-    }
+    },
+    Status: {
+        type: String,
+        default: "Pendente",
+        enum: {
+            values: ["Pendente", "Pago", "Entregue"],
+        },
+    },
 });
+
+const pedido = mongoose.model("pedido", PedidoSchema);
+
+export default pedido;

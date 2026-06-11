@@ -93,6 +93,8 @@ app.post("/agendamentos", async (req, res) => {
   };
 });
 
+//____________//
+
 // -- READ -- //
 app.get("/agendamentos", async (req, res) => {
     try {
