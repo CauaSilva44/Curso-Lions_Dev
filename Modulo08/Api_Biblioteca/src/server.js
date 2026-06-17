@@ -141,7 +141,7 @@ app.get("/emprestimos/busca", async (req, res) => {
         } else {
             res.status(200).json(emprestimos);
         };
-    } catch {
+    } catch {required: [true, "O tipo do material é obrigatório."],
         res.status(500).json({message: error.message});
     }
 });
@@ -234,4 +234,3 @@ app.listen(port, () => {
 });
 
 //________________________//
-
