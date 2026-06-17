@@ -1,29 +1,22 @@
 import mongoose from "mongoose";
 
-const itemQuantSchema = new mongoose.Schema({
+const PedidoSchema = new mongoose.Schema({
+    nomeCliente: {
+        type: String,
+        required: [true, "O nome do cliente é obrigatório."],
+    },
     item: {
         type: String,
         required: [true, "O item é obrigatório."],
         enum: {
             values: ["Salgado", "Suco", "Combo", "Bolo"],
-            message: "O item deve ser Salgado, Suco, Combo ou Bolo.",
+            message: "Escolha apenas o que tem no cardápio \n Salgado, Suco, Combo ou Bolo.",
         },
     },
     quantidade: {
         type: Number,
         required: [true, "A quantidade é obrigatória."],
         min: [1, "A quantidade deve ser no mínimo 1."],
-    },
-});
-
-const PedidoSchema = new mongoose.Schema({
-    nomeCliente: {
-        type: String,
-        required: [true, "O nome do cliente é obrigatório."],
-    },
-    pedidos: {
-        type: [itemQuantSchema],
-        required: [true, "A lista de itens é obrigatória."],
     },
     formaPagamento: {
         type: String,
