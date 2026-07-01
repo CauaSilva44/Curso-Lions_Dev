@@ -1,12 +1,12 @@
 services:
   - type: web
-  name: ApiPetShop
-  runtime: node
-  plan: free
-  buildcommand: "npm install"
-  startcommand: "npm start"
-  autoDeploy: true
-  envVars:
+    name: ApiPetShop
+    runtime: node
+    plan: free
+    buildcommand: "npm install"
+    startcommand: "npm start"
+    autoDeploy: true
+    envVars:
     - key: NODE_ENV
       value: "production"
     - key: MONGO_URI
