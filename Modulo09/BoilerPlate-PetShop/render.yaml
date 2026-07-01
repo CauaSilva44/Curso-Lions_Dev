@@ -1,16 +1,16 @@
 services:
   - type: web
-    name: ApiPetShop
+    name: api-petshop
     runtime: node
     plan: free
-    buildcommand: "npm install"
+    buildCommand: "npm install"
     startcommand: "npm start"
     autoDeploy: true
     envVars:
     - key: NODE_ENV
       value: "production"
     - key: MONGO_URI
-      sync: false
+      sync: false 
 #    - key: JWT_SECRET
 #    sync: false || generationValue: true
 #    - key: JWT_EXPIRES_IN
