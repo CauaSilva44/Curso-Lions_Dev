@@ -205,8 +205,6 @@ app.delete("/emprestimos/:id", async (req, res) => {
 
 // -- Relatorio -- //
 
-//Calcule em JavaScript e retorne: total de empréstimos, soma das multas previstas e a contagem de empréstimos por status (Emprestado, Devolvido, Atrasado).
-
 app.get("/emprestimos/relatorio", async (req, res) => {
     try {
         const totalEmprestimos = await Emprestimo.countDocuments();

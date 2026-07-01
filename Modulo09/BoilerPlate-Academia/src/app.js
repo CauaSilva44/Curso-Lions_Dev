@@ -1,0 +1,29 @@
+import express from "express";
+
+import usuarioRoutes from "./routes/usuario.routes.js";
+
+import authRoutes from "./routes/auth.routes.js";
+
+import criarErro from "./utils/CriarErro.js";
+
+import erroMiddleware from "./middleware/erro.middleware.js";
+
+const app = express();
+
+app.use(express.json());
+
+
+app.get("/", (req, res) => {
+  return res.status(200).json({message: "Boilerplate API MVC está rodando."});
+});
+app.use("/api/auth", authRoutes);
+
+app.use("/api/usuarios", usuarioRoutes);
+
+app.use((req, res, next) => {
+  return next(criarErro("Rota não encontrada.", 404));
+});
+
+app.use(erroMiddleware);
+
+export default app;
