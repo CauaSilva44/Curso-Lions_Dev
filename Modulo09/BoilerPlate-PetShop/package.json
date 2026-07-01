@@ -1,26 +1,13 @@
 {
-    "dependencies": {
-      "bcrypt": "^6.0.0",
-      "dotenv": "^17.4.2",
-      "express": "^5.2.1",
-      "mongodb": "^7.2.0",
-      "mongoos": "^0.0.1-security",
-      "mongoose": "^9.7.0",
-      "moongose": "^1.0.0",
-      "packagejson": "^1.0.1",
-      "prompt-sync": "^4.2.0"
-    },
-    "name": "caua.s",
-    "version": "1.0.0",
-    "main": "index.js",
-    "type": "module",
-    "scripts": {
-      "start": "node src/server.js",
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "description": ""
-  }
-  
+  "name": "boilerplate-petshop",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
