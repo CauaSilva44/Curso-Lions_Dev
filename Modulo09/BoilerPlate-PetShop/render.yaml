@@ -4,7 +4,7 @@ services:
     runtime: node
     plan: free
     buildCommand: "npm install"
-    startcommand: "npm start"
+    startCommand: "npm start"
     autoDeploy: true
     envVars:
     - key: NODE_ENV
