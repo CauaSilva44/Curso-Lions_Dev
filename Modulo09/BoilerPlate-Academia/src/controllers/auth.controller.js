@@ -4,7 +4,6 @@ async function cadastrar(req, res, next) {
   try {
     const resultado = await AuthService.cadastrar(req.body);
 
-
     return res.status(201).json(resultado);
   } catch (error) {
 

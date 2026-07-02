@@ -78,26 +78,26 @@ async function cadastrar({ nome, email, senha }) {
 
 async function login({ email, senha }) {
 
-  if (!email || !senha) {
-    throw criarErro("Email e senha são obrigatórios.", 400);
-  }
+if (!email || !senha) {
+  throw criarErro("Email e senha são obrigatórios.", 400);
+}
 
-  const usuario = await UsuarioRepository.buscarPorEmail(email, true);
+const usuario = await UsuarioRepository.buscarPorEmail(email, true);
 
-  if (!usuario) {
-    throw criarErro("Email ou senha incorretos.", 401);
-  }
+if (!usuario) {
+  throw criarErro("Email ou senha incorretos.", 401);
+}
 
-  const senhaCorreta = await bcrypt.compare(senha, usuario.senhaHash);
+const senhaCorreta = await bcrypt.compare(senha, usuario.senhaHash);
 
-  if (!senhaCorreta) {
-    throw criarErro("Email ou senha incorretos.", 401);
-  }
+if (!senhaCorreta) {
+  throw criarErro("Email ou senha incorretos.", 401);
+}
 
-  return {
-    usuario: montarUsuarioSeguro(usuario),
-    token: gerarToken(usuario),
-  };
+return {
+  usuario: montarUsuarioSeguro(usuario),
+  token: gerarToken(usuario),
+};
 }
 
 const AuthService = {
