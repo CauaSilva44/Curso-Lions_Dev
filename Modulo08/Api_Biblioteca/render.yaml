@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: Api-Academia
+    name: Api-Biblioteca
     runtime: node
     plan: free
     buildCommand: "npm install"
