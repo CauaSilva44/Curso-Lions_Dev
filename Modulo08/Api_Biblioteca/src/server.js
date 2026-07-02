@@ -15,7 +15,7 @@ app.use(express.json());
 // -- Entrada -- //
 
 app.get(("/"), (req, res) => {
-    res.json({message: "Bem-vindo à API de pedidos da Cantina!"}); 
+    res.json({message: "Bem-vindo à API de Biblioteca!"}); 
 });
 
 //_______________//
